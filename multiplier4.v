@@ -1,7 +1,8 @@
+// signed multiplier
 `timescale 1ns/1ns
 
 module multiplier4
-#(parameter nb = 15)
+   #(parameter nb = 15) // the number of bits of our numbers
 (
 //-----------------------Port directions and deceleration
    input clk,  
@@ -11,13 +12,12 @@ module multiplier4
    output reg [nb+nb - 1:0] Product,
    output ready
     );
-parameter req_bits = $clog2(nb);
+   parameter req_bits = $clog2(nb); // finding best register for counter
 
 
 //------------------------------------------------------
 
 //----------------------------------- register deceleration
-//reg [15:0] Multiplicand ;
 reg [nb-1:0]  Multiplier;
 reg [req_bits:0]  counter; // need to change
 reg sign;
